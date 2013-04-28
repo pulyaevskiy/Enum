@@ -1,0 +1,13 @@
+{
+    "name": "StartupLabs/Enum",
+    "description": "StartupLabs Enum Component",
+    "type": "library",
+    "keywords": [],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "StartupLabs": "src/"
+        }
+    }
+}
