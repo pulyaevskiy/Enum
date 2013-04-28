@@ -9,7 +9,7 @@ This implementation is pretty much similar to all those you can find out there (
 Usage
 =====
 
-# Define an ancestor of the Enum class. For example:
+### 1. Define an ancestor of the Enum class. For example:
 ```php
 <?php
 
@@ -27,8 +27,7 @@ class Shape extends Enum {
 }
 ```
 
-# Use it with type-hinting in your classes:
-
+### 2. Use it with type-hinting in your classes:
 ```php
 <?php
 
