@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-0": {
-            "StartupLabs\\Component\\Enum": "src/StartupLabs/Component/Enum"
+            "StartupLabs\\Component\\Enum": "src"
         }
     }
 }
