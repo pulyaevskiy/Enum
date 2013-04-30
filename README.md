@@ -47,11 +47,52 @@ class Model {
 }
 ```
 
+Extended usage: shortcut methods
+================================
+
+Below code sample shows how Enums are used most of the times:
+```php
+<?php
+
+$model = new Model();
+$model->setShape(new Shape(Shape::TRIANGLE));
+```
+To simplify usage of enums the component implements magic method __callStatic() and allows developers to create Enum instances via calls to static methods which names equals to values of class constants.
+So example above can be transformed like this:
+```php
+<?php
+
+$model = new Model();
+$model->setShape(Shape::triangle());
+```
+
+To enable your IDE autocomplete features for these shortcut methods you can add PHPDoc to your enum class as follows:
+```php
+<?php
+
+/**
+ * @method static Shape triangle()
+ * @method static Shape square()
+ * @method static Shape pentagon()
+ * @method static Shape hexagon()
+ */
+use StartupLabs\Component\Enum\Enum;
+
+class Shape extends Enum {
+
+    const TRIANGLE = 'triangle';
+    const SQUARE = 'square';
+    const PENTAGON = 'pentagon';
+    const HEXAGON = 'hexagon';
+}
+```
+
 Contributors
 ============
 
 * Alexey Tihomirov
 * Anatoly Pulyaevsky
+* Tania Goncharonok
 
 License
 =======
