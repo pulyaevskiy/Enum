@@ -17,6 +17,12 @@ namespace StartupLabs\Example;
 
 use StartupLabs\Component\Enum\Enum;
 
+/**
+ * @method static Shape triangle()
+ * @method static Shape square()
+ * @method static Shape pentagon()
+ * @method static Shape hexagon()
+ */
 class Shape extends Enum {
 
     const TRIANGLE = 'triangle';
@@ -47,43 +53,22 @@ class Model {
 }
 ```
 
-Extended usage: shortcut methods
-================================
-
-Below code sample shows how Enums are used most of the times:
+### 3. Create new instances using static methods:
 ```php
 <?php
 
-$model = new Model();
-$model->setShape(new Shape(Shape::TRIANGLE));
-```
-To simplify usage of enums the component implements magic method __callStatic() and allows developers to create Enum instances via calls to static methods which names equals to values of class constants.
-So example above can be transformed like this:
-```php
-<?php
+namespace StartupLabs\Example;
 
-$model = new Model();
-$model->setShape(Shape::triangle());
-```
+class Application {
 
-To enable your IDE autocomplete features for these shortcut methods you can add PHPDoc to your enum class as follows:
-```php
-<?php
+    public function changeShapeToSquare(Model $model)
+    {
+        // Enum class has __callStatic method that checks if there is constant with name of called function
+        // and then create instance of Shape class with this value
+        $shape = Shape::square();
+        $$model->setShape($shape);
+    }
 
-/**
- * @method static Shape triangle()
- * @method static Shape square()
- * @method static Shape pentagon()
- * @method static Shape hexagon()
- */
-use StartupLabs\Component\Enum\Enum;
-
-class Shape extends Enum {
-
-    const TRIANGLE = 'triangle';
-    const SQUARE = 'square';
-    const PENTAGON = 'pentagon';
-    const HEXAGON = 'hexagon';
 }
 ```
 
@@ -92,7 +77,6 @@ Contributors
 
 * Alexey Tihomirov
 * Anatoly Pulyaevsky
-* Tania Goncharonok
 
 License
 =======
