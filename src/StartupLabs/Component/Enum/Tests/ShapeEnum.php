@@ -5,10 +5,10 @@ namespace StartupLabs\Component\Enum\Tests;
 
 
 /**
- * @method static type triangle()
- * @method static type square()
- * @method static type pentagon()
- * @method static type hexagon()
+ * @method static ShapeEnum triangle()
+ * @method static ShapeEnum square()
+ * @method static ShapeEnum pentagon()
+ * @method static ShapeEnum hexagon()
  */
 use StartupLabs\Component\Enum\Enum;
 
