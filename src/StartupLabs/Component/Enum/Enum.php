@@ -14,6 +14,16 @@ abstract class Enum
         $this->setValue($value);
     }
 
+    final public static function __callStatic($name, $arguments)
+    {
+        if (!in_array($name, self::getValues())) {
+            throw new \UnexpectedValueException("Unexpected method '{$name}' called.");
+        }
+
+        $class = get_called_class();
+        return new $class($name);
+    }
+
     final private function setValue($value)
     {
         if (!$this->hasValue($value)) {

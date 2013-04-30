@@ -20,6 +20,16 @@ class EnumTest extends \PHPUnit_Framework_TestCase {
         }
     }
 
+    public function testCallStatic()
+    {
+        $square = new ShapeEnum(ShapeEnum::SQUARE);
+        $triangle = new ShapeEnum(ShapeEnum::TRIANGLE);
+        $newTriangle = $square::triangle();
+
+        $this->assertTrue($triangle == $newTriangle);
+        $this->assertFalse($triangle === $newTriangle);
+    }
+
     public function testGetValues()
     {
         $expected = array('triangle', 'square', 'pentagon', 'hexagon');

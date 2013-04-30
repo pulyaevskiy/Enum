@@ -4,6 +4,12 @@
 namespace StartupLabs\Component\Enum\Tests;
 
 
+/**
+ * @method static type triangle()
+ * @method static type square()
+ * @method static type pentagon()
+ * @method static type hexagon()
+ */
 use StartupLabs\Component\Enum\Enum;
 
 class ShapeEnum extends Enum {
@@ -12,25 +18,4 @@ class ShapeEnum extends Enum {
     const SQUARE = 'square';
     const PENTAGON = 'pentagon';
     const HEXAGON = 'hexagon';
-
-    public static function triangle()
-    {
-        return new self(self::TRIANGLE);
-    }
-
-    public static function square()
-    {
-        return new self(self::SQUARE);
-    }
-
-    public static function pentagon()
-    {
-        return new self(self::PENTAGON);
-    }
-
-    public static function hexagon()
-    {
-        return new self(self::HEXAGON);
-    }
-
 }
