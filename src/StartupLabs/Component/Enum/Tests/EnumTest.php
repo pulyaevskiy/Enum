@@ -22,12 +22,13 @@ class EnumTest extends \PHPUnit_Framework_TestCase {
 
     public function testCallStatic()
     {
-        $square = new ShapeEnum(ShapeEnum::SQUARE);
-        $triangle = new ShapeEnum(ShapeEnum::TRIANGLE);
-        $newTriangle = $square::triangle();
+        $square = ShapeEnum::square();
 
-        $this->assertTrue($triangle == $newTriangle);
-        $this->assertFalse($triangle === $newTriangle);
+        $this->assertInstanceOf('StartupLabs\Component\Enum\Tests\ShapeEnum', $square);
+        $this->assertEquals('SQUARE', $square->getName());
+
+        $this->setExpectedException('\UnexpectedValueException');
+        ShapeEnum::squareFail();
     }
 
     public function testGetValues()
