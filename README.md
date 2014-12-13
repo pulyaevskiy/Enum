@@ -1,6 +1,8 @@
 Enum
 ==========================
 
+[![Build Status](https://travis-ci.org/pulyaevsky/Enum.svg?branch=master)](https://travis-ci.org/pulyaevsky/Enum)
+
 Enum component enables developers to define strict enumerated types based on standard PHP classes.
 Usage of this component is a little bit verbose but it allows you to get rid of constant validation of every enum field in your entities.
 This implementation is pretty much similar to all those you can find out there (including SplEnum) but pretends to be more accurate.
