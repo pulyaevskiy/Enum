@@ -2,9 +2,16 @@
     "name": "pulyaevsky/enum",
     "description": "Simple implementation of Enum type for PHP",
     "type": "library",
-    "keywords": [],
+    "keywords": ["enum"],
     "homepage": "https://github.com/pulyaevsky/Enum",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Anatoly Pulyaevskiy",
+            "homepage": "https://github.com/pulyaevsky",
+            "role": "Developer"
+        }
+    ],
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.0"
