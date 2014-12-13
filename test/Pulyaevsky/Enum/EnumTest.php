@@ -15,19 +15,16 @@ class ShapeEnum extends Enum
     const HEXAGON = 'hexagon';
 }
 
-class EnumTest extends \PHPUnit_Framework_TestCase {
-
+class EnumTest extends \PHPUnit_Framework_TestCase
+{
     public function testConstructor()
     {
-        $square = new ShapeEnum(ShapeEnum::SQUARE);
-        $this->assertEquals(ShapeEnum::SQUARE, $square->getValue());
-
         try {
-            $fail = new ShapeEnum('BadValue');
+            $fail = ShapeEnum::fromValue('FAIL!');
             $this->fail("Creation of enum with invalid value must throw an exception.");
         } catch (\Exception $e) {
             $this->assertInstanceOf('UnexpectedValueException', $e);
-            $this->assertEquals("Unexpected value 'BadValue' provided.", $e->getMessage());
+            $this->assertEquals("Unexpected value 'FAIL!' provided.", $e->getMessage());
         }
     }
 
@@ -67,14 +64,20 @@ class EnumTest extends \PHPUnit_Framework_TestCase {
 
     public function testGetName()
     {
-        $square = new ShapeEnum(ShapeEnum::SQUARE);
+        $square = ShapeEnum::fromValue(ShapeEnum::SQUARE);
         $this->assertEquals('SQUARE', $square->getName());
     }
 
     public function testToString()
     {
-        $square = new ShapeEnum(ShapeEnum::SQUARE);
+        $square = ShapeEnum::fromValue(ShapeEnum::SQUARE);
         $this->assertEquals('SQUARE', (string) $square);
+    }
+
+    public function testGetValue()
+    {
+        $square = ShapeEnum::fromValue(ShapeEnum::SQUARE);
+        $this->assertEquals('square', $square->getValue());
     }
 
     public function testEqualityComparison()
@@ -84,7 +87,7 @@ class EnumTest extends \PHPUnit_Framework_TestCase {
         $triangle = ShapeEnum::triangle();
 
         $this->assertTrue($square1 == $square2);
-        $this->assertFalse($square1 === $square2);
+        $this->assertTrue($square1 === $square2);
         $this->assertFalse($square1 == $triangle);
     }
 }

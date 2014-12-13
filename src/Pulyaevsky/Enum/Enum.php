@@ -14,23 +14,61 @@ abstract class Enum
     private static $cachedConstantsByClass = array();
 
     /**
+     * @var array
+     */
+    private static $instanceMapByClass = array();
+
+    /**
      * @param mixed $value
      */
-    final public function __construct($value)
+    final private function __construct($value)
     {
         $this->setValue($value);
     }
 
-    final public static function __callStatic($name, $arguments)
+    /**
+     * @param mixed $value
+     *
+     * @return Enum
+     */
+    final public static function fromValue($value)
     {
-        if (!in_array($name, self::getValues())) {
-            throw new \UnexpectedValueException("Unexpected method '{$name}' called.");
-        }
-
-        $class = get_called_class();
-        return new $class($name);
+        return self::getInstanceForValue($value);
     }
 
+    /**
+     * @param $value
+     * @param $arguments
+     *
+     * @return Enum
+     */
+    final public static function __callStatic($value, $arguments)
+    {
+        if (!in_array($value, self::getValues())) {
+            throw new \UnexpectedValueException("Unexpected method '{$value}' called.");
+        }
+
+        return self::getInstanceForValue($value);
+    }
+
+    /**
+     * @param mixed $value
+     *
+     * @return Enum
+     */
+    final private static function getInstanceForValue($value)
+    {
+        $class = get_called_class();
+        if (!isset(self::$instanceMapByClass[$class][$value])) {
+            self::$instanceMapByClass[$class][$value] = new $class($value);
+        }
+
+        return self::$instanceMapByClass[$class][$value];
+    }
+
+    /**
+     * @param mixed $value
+     */
     final private function setValue($value)
     {
         if (!$this->hasValue($value)) {
@@ -39,16 +77,27 @@ abstract class Enum
         $this->value = $value;
     }
 
+    /**
+     * @param mixed $value
+     *
+     * @return bool
+     */
     final private function hasValue($value)
     {
         return in_array($value, self::getValues(), true);
     }
 
+    /**
+     * @return array
+     */
     final public static function getValues()
     {
         return array_values(self::getConstants());
     }
 
+    /**
+     * @return array
+     */
     final public static function getConstants()
     {
         static::ensureInitialized();
@@ -65,6 +114,9 @@ abstract class Enum
         }
     }
 
+    /**
+     * @return mixed
+     */
     final public function getValue()
     {
         return $this->value;
