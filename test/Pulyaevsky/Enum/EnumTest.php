@@ -1,8 +1,19 @@
 <?php
+namespace Pulyaevsky\Enum;
 
-
-namespace StartupLabs\Component\Enum\Tests;
-
+/**
+ * @method static ShapeEnum triangle()
+ * @method static ShapeEnum square()
+ * @method static ShapeEnum pentagon()
+ * @method static ShapeEnum hexagon()
+ */
+class ShapeEnum extends Enum
+{
+    const TRIANGLE = 'triangle';
+    const SQUARE = 'square';
+    const PENTAGON = 'pentagon';
+    const HEXAGON = 'hexagon';
+}
 
 class EnumTest extends \PHPUnit_Framework_TestCase {
 
@@ -24,7 +35,7 @@ class EnumTest extends \PHPUnit_Framework_TestCase {
     {
         $square = ShapeEnum::square();
 
-        $this->assertInstanceOf('StartupLabs\Component\Enum\Tests\ShapeEnum', $square);
+        $this->assertInstanceOf('Pulyaevsky\Enum\ShapeEnum', $square);
         $this->assertEquals('SQUARE', $square->getName());
 
         $this->setExpectedException('\UnexpectedValueException');
@@ -76,5 +87,4 @@ class EnumTest extends \PHPUnit_Framework_TestCase {
         $this->assertFalse($square1 === $square2);
         $this->assertFalse($square1 == $triangle);
     }
-
 }

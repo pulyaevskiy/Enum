@@ -1,14 +1,21 @@
 <?php
-
-namespace StartupLabs\Component\Enum;
+namespace Pulyaevsky\Enum;
 
 abstract class Enum
 {
-
+    /**
+     * @var mixed
+     */
     private $value;
 
+    /**
+     * @var array
+     */
     private static $cachedConstantsByClass = array();
 
+    /**
+     * @param mixed $value
+     */
     final public function __construct($value)
     {
         $this->setValue($value);
@@ -76,5 +83,4 @@ abstract class Enum
     {
         return $this->getName();
     }
-
 }

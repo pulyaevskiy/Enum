@@ -12,8 +12,8 @@
          bootstrap="vendor/autoload.php"
         >
     <testsuites>
-        <testsuite name="Enum ComponentTest Suite">
-            <directory>./src/StartupLabs/Component/Enum/Tests/</directory>
+        <testsuite name="Enum Test Suite">
+            <directory>./test/Pulyaevsky/Enum/</directory>
         </testsuite>
     </testsuites>
 
