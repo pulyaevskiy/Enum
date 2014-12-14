@@ -104,7 +104,7 @@ abstract class Enum
         $class = get_called_class();
         return self::$cachedConstantsByClass[$class];
     }
-
+    
     final private static function ensureInitialized()
     {
         $class = get_called_class();
@@ -122,15 +122,24 @@ abstract class Enum
         return $this->value;
     }
 
+    /**
+     * @return array
+     */
     final public static function getConstantNames() {
         return array_keys(self::getConstants());
     }
-    
+
+    /**
+     * @return string
+     */
     final public function getName()
     {
         return array_search($this->value, self::getConstants(), true);
     }
 
+    /**
+     * @return string
+     */
     final public function __toString()
     {
         return $this->getName();
