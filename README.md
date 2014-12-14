@@ -7,7 +7,7 @@ Enum component enables developers to define strict enumerated types based on sta
 Usage of this component is a little bit verbose but it allows you to get rid of constant validation of every enum field in your entities.
 This implementation is pretty much similar to all those you can find out there (including SplEnum) but pretends to be more accurate.
 
-This is a fork from `startuplabs/enum` since original repository is not maintained anymore. 
+This is a fork from `startuplabs/enum` which is not maintained anymore. 
 
 Usage
 =====
