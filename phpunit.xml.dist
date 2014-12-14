@@ -13,7 +13,7 @@
         >
     <testsuites>
         <testsuite name="Enum Test Suite">
-            <directory>./test/Pulyaevsky/Enum/</directory>
+            <directory>./test/Pulyaevskiy/Enum/</directory>
         </testsuite>
     </testsuites>
 

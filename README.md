@@ -1,7 +1,7 @@
 Enum
 ==========================
 
-[![Build Status](https://travis-ci.org/pulyaevsky/Enum.svg?branch=master)](https://travis-ci.org/pulyaevsky/Enum)
+[![Build Status](https://travis-ci.org/pulyaevskiy/Enum.svg?branch=master)](https://travis-ci.org/pulyaevskiy/Enum)
 
 Enum component enables developers to define strict enumerated types based on standard PHP classes.
 Usage of this component is a little bit verbose but it allows you to get rid of constant validation of every enum field in your entities.
@@ -18,7 +18,7 @@ Usage
 <?php
 namespace Acme\Example;
 
-use Pulyaevsky\Enum;
+use Pulyaevskiy\Enum;
 
 /**
  * @method static Shape triangle()

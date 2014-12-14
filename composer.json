@@ -1,14 +1,14 @@
 {
-    "name": "pulyaevsky/enum",
+    "name": "pulyaevskiy/enum",
     "description": "Simple implementation of Enum type for PHP",
     "type": "library",
     "keywords": ["enum"],
-    "homepage": "https://github.com/pulyaevsky/Enum",
+    "homepage": "https://github.com/pulyaevskiy/Enum",
     "license": "MIT",
     "authors": [
         {
             "name": "Anatoly Pulyaevskiy",
-            "homepage": "https://github.com/pulyaevsky",
+            "homepage": "https://github.com/pulyaevskiy",
             "role": "Developer"
         }
     ],
@@ -21,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Pulyaevsky\\Enum\\": "src/Pulyaevsky/Enum"
+            "Pulyaevskiy\\Enum\\": "src/Pulyaevskiy/Enum"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Pulyaevsky\\Enum\\": "test/Pulyaevsky/Enum"
+            "Pulyaevskiy\\Enum\\": "test/Pulyaevskiy/Enum"
         }
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Pulyaevsky\Enum;
+namespace Pulyaevskiy\Enum;
 
 abstract class Enum
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Pulyaevsky\Enum;
+namespace Pulyaevskiy\Enum;
 
 /**
  * @method static ShapeEnum triangle()
@@ -32,7 +32,7 @@ class EnumTest extends \PHPUnit_Framework_TestCase
     {
         $square = ShapeEnum::square();
 
-        $this->assertInstanceOf('Pulyaevsky\Enum\ShapeEnum', $square);
+        $this->assertInstanceOf('Pulyaevskiy\Enum\ShapeEnum', $square);
         $this->assertEquals('SQUARE', $square->getName());
 
         $this->setExpectedException('\UnexpectedValueException');
