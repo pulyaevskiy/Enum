@@ -24,7 +24,7 @@ class EnumTest extends \PHPUnit_Framework_TestCase
             $this->fail("Creation of enum with invalid value must throw an exception.");
         } catch (\Exception $e) {
             $this->assertInstanceOf('UnexpectedValueException', $e);
-            $this->assertEquals("Unexpected value 'FAIL!' provided.", $e->getMessage());
+            $this->assertEquals("Enum: unexpected value 'FAIL!' provided.", $e->getMessage());
         }
     }
 
