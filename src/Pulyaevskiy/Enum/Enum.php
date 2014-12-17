@@ -37,18 +37,19 @@ abstract class Enum
     }
 
     /**
-     * @param $value
+     * @param $name
      * @param $arguments
      *
      * @return Enum
      */
-    final public static function __callStatic($value, $arguments)
+    final public static function __callStatic($name, $arguments)
     {
-        if (!in_array($value, self::getValues())) {
-            throw new \UnexpectedValueException("Unexpected method '{$value}' called.");
+        $constantName = strtoupper($name);
+        if (!in_array($constantName, self::getConstantNames())) {
+            throw new \UnexpectedValueException("Enum: unexpected method '{$name}' called.");
         }
 
-        return self::getInstanceForValue($value);
+        return self::getInstanceForValue(self::getConstantValue($constantName));
     }
 
     /**
@@ -66,13 +67,20 @@ abstract class Enum
         return self::$instanceMapByClass[$class][$value];
     }
 
+    final private static function getConstantValue($name)
+    {
+        $constants = self::getConstants();
+
+        return $constants[$name];
+    }
+
     /**
      * @param mixed $value
      */
     final private function setValue($value)
     {
         if (!$this->hasValue($value)) {
-            throw new \UnexpectedValueException("Unexpected value '{$value}' provided.");
+            throw new \UnexpectedValueException("Enum: unexpected value '{$value}' provided.");
         }
         $this->value = $value;
     }
@@ -104,7 +112,7 @@ abstract class Enum
         $class = get_called_class();
         return self::$cachedConstantsByClass[$class];
     }
-    
+
     final private static function ensureInitialized()
     {
         $class = get_called_class();

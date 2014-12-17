@@ -9,10 +9,10 @@ namespace Pulyaevskiy\Enum;
  */
 class ShapeEnum extends Enum
 {
-    const TRIANGLE = 'triangle';
-    const SQUARE = 'square';
-    const PENTAGON = 'pentagon';
-    const HEXAGON = 'hexagon';
+    const TRIANGLE = 1;
+    const SQUARE = 2;
+    const PENTAGON = 3;
+    const HEXAGON = 4;
 }
 
 class EnumTest extends \PHPUnit_Framework_TestCase
@@ -41,17 +41,17 @@ class EnumTest extends \PHPUnit_Framework_TestCase
 
     public function testGetValues()
     {
-        $expected = array('triangle', 'square', 'pentagon', 'hexagon');
+        $expected = array(1, 2, 3, 4);
         $this->assertEquals($expected, ShapeEnum::getValues());
     }
 
     public function testGetConstants()
     {
         $expected = array(
-            'TRIANGLE' => 'triangle',
-            'SQUARE' => 'square',
-            'PENTAGON' => 'pentagon',
-            'HEXAGON' => 'hexagon',
+            'TRIANGLE' => 1,
+            'SQUARE' => 2,
+            'PENTAGON' => 3,
+            'HEXAGON' => 4,
         );
         $this->assertEquals($expected, ShapeEnum::getConstants());
     }
@@ -77,7 +77,7 @@ class EnumTest extends \PHPUnit_Framework_TestCase
     public function testGetValue()
     {
         $square = ShapeEnum::fromValue(ShapeEnum::SQUARE);
-        $this->assertEquals('square', $square->getValue());
+        $this->assertEquals(2, $square->getValue());
     }
 
     public function testEqualityComparison()
