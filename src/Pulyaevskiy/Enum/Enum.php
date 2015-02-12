@@ -92,7 +92,7 @@ abstract class Enum
      */
     final private function hasValue($value)
     {
-        return in_array($value, self::getValues(), true);
+        return in_array($value, self::getValues());
     }
 
     /**

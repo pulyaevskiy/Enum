@@ -28,6 +28,12 @@ class EnumTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function testNonStrictTypeBehavior()
+    {
+        $shape = ShapeEnum::fromValue('2');
+        $this->assertEquals(ShapeEnum::square(), $shape);
+    }
+
     public function testCallStatic()
     {
         $square = ShapeEnum::square();
