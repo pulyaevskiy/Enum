@@ -1,7 +1,7 @@
 <?php
 namespace Pulyaevskiy\Enum;
 
-abstract class Enum
+abstract class Enum implements \JsonSerializable
 {
     /**
      * @var mixed
@@ -80,9 +80,21 @@ abstract class Enum
     final private function setValue($value)
     {
         if (!$this->hasValue($value)) {
-            throw new \UnexpectedValueException("Enum: unexpected value '{$value}' provided.");
+            $class = get_class($this);
+            throw new \UnexpectedValueException("$class: unexpected value '{$value}' provided.");
         }
-        $this->value = $value;
+
+        $this->value = $this->getConstantValue($this->getConstantNameFromValue($value));
+    }
+
+    final private function getConstantNameFromValue($value)
+    {
+        foreach (static::getConstants() as $name => $cValue) {
+            if ($cValue == $value) {
+                return $name;
+            }
+        }
+        throw new \UnexpectedValueException("Unexpected value '{$value}' provided.");
     }
 
     /**
@@ -142,7 +154,7 @@ abstract class Enum
      */
     final public function getName()
     {
-        return array_search($this->value, self::getConstants(), true);
+        return array_search($this->value, self::getConstants());
     }
 
     /**
@@ -150,6 +162,16 @@ abstract class Enum
      */
     final public function __toString()
     {
-        return $this->getName();
+        return (string) $this->getName();
+    }
+
+    /**
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed Data which can be serialized by json_encode.
+     */
+    function jsonSerialize()
+    {
+        return (int) $this->value;
     }
 }

@@ -24,7 +24,7 @@ class EnumTest extends \PHPUnit_Framework_TestCase
             $this->fail("Creation of enum with invalid value must throw an exception.");
         } catch (\Exception $e) {
             $this->assertInstanceOf('UnexpectedValueException', $e);
-            $this->assertEquals("Enum: unexpected value 'FAIL!' provided.", $e->getMessage());
+            $this->assertEquals("Pulyaevskiy\Enum\ShapeEnum: unexpected value 'FAIL!' provided.", $e->getMessage());
         }
     }
 
@@ -83,7 +83,7 @@ class EnumTest extends \PHPUnit_Framework_TestCase
     public function testGetValue()
     {
         $square = ShapeEnum::fromValue(ShapeEnum::SQUARE);
-        $this->assertEquals(2, $square->getValue());
+        $this->assertSame(2, $square->getValue());
     }
 
     public function testEqualityComparison()
@@ -95,5 +95,12 @@ class EnumTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($square1 == $square2);
         $this->assertTrue($square1 === $square2);
         $this->assertFalse($square1 == $triangle);
+    }
+
+    public function testJsonSerialize()
+    {
+        $square = ShapeEnum::square();
+        $result = json_encode(array('value' => $square));
+        $this->assertEquals('{"value":2}', $result);
     }
 }
