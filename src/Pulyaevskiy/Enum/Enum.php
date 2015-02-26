@@ -33,7 +33,7 @@ abstract class Enum implements \JsonSerializable
      */
     final public static function fromValue($value)
     {
-        return self::getInstanceForValue($value);
+        return static::getInstanceForValue($value);
     }
 
     /**
@@ -45,11 +45,11 @@ abstract class Enum implements \JsonSerializable
     final public static function __callStatic($name, $arguments)
     {
         $constantName = strtoupper($name);
-        if (!in_array($constantName, self::getConstantNames())) {
+        if (!in_array($constantName, static::getConstantNames())) {
             throw new \UnexpectedValueException("Enum: unexpected method '{$name}' called.");
         }
 
-        return self::getInstanceForValue(self::getConstantValue($constantName));
+        return static::getInstanceForValue(static::getConstantValue($constantName));
     }
 
     /**
@@ -69,7 +69,7 @@ abstract class Enum implements \JsonSerializable
 
     final private static function getConstantValue($name)
     {
-        $constants = self::getConstants();
+        $constants = static::getConstants();
 
         return $constants[$name];
     }
@@ -104,7 +104,7 @@ abstract class Enum implements \JsonSerializable
      */
     final private function hasValue($value)
     {
-        return in_array($value, self::getValues());
+        return in_array($value, static::getValues());
     }
 
     /**
@@ -112,7 +112,7 @@ abstract class Enum implements \JsonSerializable
      */
     final public static function getValues()
     {
-        return array_values(self::getConstants());
+        return array_values(static::getConstants());
     }
 
     /**
@@ -146,7 +146,7 @@ abstract class Enum implements \JsonSerializable
      * @return array
      */
     final public static function getConstantNames() {
-        return array_keys(self::getConstants());
+        return array_keys(static::getConstants());
     }
 
     /**
@@ -154,7 +154,7 @@ abstract class Enum implements \JsonSerializable
      */
     final public function getName()
     {
-        return array_search($this->value, self::getConstants());
+        return array_search($this->value, static::getConstants());
     }
 
     /**
