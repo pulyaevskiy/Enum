@@ -84,7 +84,7 @@ abstract class Enum implements \JsonSerializable
             throw new \UnexpectedValueException("$class: unexpected value '{$value}' provided.");
         }
 
-        $this->value = $this->getConstantValue($this->getConstantNameFromValue($value));
+        $this->value = static::getConstantValue($this->getConstantNameFromValue($value));
     }
 
     final private function getConstantNameFromValue($value)
