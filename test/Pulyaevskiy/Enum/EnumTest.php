@@ -15,6 +15,14 @@ class ShapeEnum extends Enum
     const HEXAGON = 4;
 }
 
+/**
+ * @method static Zombie undead()
+ */
+class Zombie extends Enum
+{
+    const UNDEAD = 'undead';
+}
+
 class EnumTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructor()
@@ -102,5 +110,9 @@ class EnumTest extends \PHPUnit_Framework_TestCase
         $square = ShapeEnum::square();
         $result = json_encode(array('value' => $square));
         $this->assertEquals('{"value":2}', $result);
+
+        $undead = Zombie::undead();
+        $result = json_encode(array('value' => $undead));
+        $this->assertEquals('{"value":"undead"}', $result);
     }
 }

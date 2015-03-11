@@ -172,6 +172,6 @@ abstract class Enum implements \JsonSerializable
      */
     function jsonSerialize()
     {
-        return (int) $this->value;
+        return $this->value;
     }
 }
