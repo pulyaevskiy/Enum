@@ -31,8 +31,8 @@ class EnumTest extends \PHPUnit_Framework_TestCase
             $fail = ShapeEnum::fromValue('FAIL!');
             $this->fail("Creation of enum with invalid value must throw an exception.");
         } catch (\Exception $e) {
-            $this->assertInstanceOf('UnexpectedValueException', $e);
-            $this->assertEquals("Pulyaevskiy\Enum\ShapeEnum: unexpected value 'FAIL!' provided.", $e->getMessage());
+            $this->assertInstanceOf('Pulyaevskiy\Enum\InvalidEnumValueException', $e);
+            $this->assertEquals("'FAIL!' is not a valid value for ShapeEnum.", $e->getMessage());
         }
     }
 

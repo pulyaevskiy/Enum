@@ -76,12 +76,14 @@ abstract class Enum implements \JsonSerializable
 
     /**
      * @param mixed $value
+     *
+     * @throws InvalidEnumValueException
      */
     final private function setValue($value)
     {
         if (!$this->hasValue($value)) {
-            $class = get_class($this);
-            throw new \UnexpectedValueException("$class: unexpected value '{$value}' provided.");
+            $class = (new \ReflectionClass($this))->getShortName();
+            throw new InvalidEnumValueException("'{$value}' is not a valid value for $class.");
         }
 
         $this->value = static::getConstantValue($this->getConstantNameFromValue($value));
